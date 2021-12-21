@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: #18181d;
+  min-height: 100vh;
+}
