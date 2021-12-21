@@ -1,3 +1,7 @@
+:root {
+  font-size: clamp(18px, 2vw, 32px);
+}
+
 html,
 body {
   padding: 0;
