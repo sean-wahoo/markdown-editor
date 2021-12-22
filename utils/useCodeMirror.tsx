@@ -6,10 +6,43 @@ import { history, historyKeymap } from "@codemirror/history";
 import { indentOnInput } from "@codemirror/language";
 import { bracketMatching } from "@codemirror/matchbrackets";
 import { lineNumbers, highlightActiveLineGutter } from "@codemirror/gutter";
-import { defaultHighlightStyle } from "@codemirror/highlight";
-import { javascript } from "@codemirror/lang-javascript";
+import {
+  defaultHighlightStyle,
+  HighlightStyle,
+  tags,
+} from "@codemirror/highlight";
+import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { languages } from "@codemirror/language-data";
+import { oneDark } from "@codemirror/theme-one-dark";
 
-const useCodeMirror = <T extends Element>(props: any) => {
+const syntaxHighlighting = HighlightStyle.define([
+  {
+    tag: tags.heading1,
+    fontSize: "1.6rem",
+    fontWeight: "bold",
+  },
+  {
+    tag: tags.heading2,
+    fontSize: "1.4rem",
+    fontWeight: "bold",
+  },
+  {
+    tag: tags.heading3,
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+  },
+]);
+
+export const transparent = EditorView.theme({
+  "&": {
+    backgroundColor: "transparent !important",
+    height: "100%",
+  },
+});
+
+const useCodeMirror = <T extends Element>(
+  props: any
+): [React.MutableRefObject<T | null>, EditorView?] => {
   const refContainer = useRef<T>(null);
   const [editorView, setEditorView] = useState<EditorView>();
   const { onChange } = props;
@@ -27,7 +60,14 @@ const useCodeMirror = <T extends Element>(props: any) => {
         bracketMatching(),
         defaultHighlightStyle.fallback,
         highlightActiveLine(),
-        javascript(),
+        markdown({
+          base: markdownLanguage,
+          codeLanguages: languages,
+          addKeymap: true,
+        }),
+        oneDark,
+        transparent,
+        syntaxHighlighting,
         EditorView.lineWrapping,
         EditorView.updateListener.of((update) => {
           if (update.changes) {
