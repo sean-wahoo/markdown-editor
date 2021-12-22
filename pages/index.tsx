@@ -3,7 +3,7 @@ import styles from "styles/index.module.scss";
 import React, { useState } from "react";
 import Editor from "components/Editor";
 import Preview from "components/Preview";
-
+import Head from "next/head";
 const Index: NextPage = () => {
   const [code, setCode] = useState<string>(`
   # :computer: + :coffee: = :grin:
@@ -22,6 +22,14 @@ const Index: NextPage = () => {
 
   return (
     <main className={styles.main}>
+      <Head>
+        <title>Markdown Editor - Sean Reichel</title>
+        <meta
+          name="description"
+          content="A markdown editor where you can see a preview of what you've written
+          off to the side"
+        />
+      </Head>
       <Editor
         onChange={(c: string) => {
           console.log(code);
