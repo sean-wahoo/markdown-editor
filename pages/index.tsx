@@ -24,10 +24,11 @@ const Index: NextPage = () => {
     <main className={styles.main}>
       <Head>
         <title>Markdown Editor - Sean Reichel</title>
-        <meta name="description">
-          A markdown editor where you can see a preview of what you've written
-          off to the side
-        </meta>
+        <meta
+          name="description"
+          content="A markdown editor where you can see a preview of what you've written
+          off to the side"
+        />
       </Head>
       <Editor
         onChange={(c: string) => {
