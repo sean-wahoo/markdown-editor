@@ -1,5 +1,11 @@
+:root {
+  font-size: clamp(12px, 1vw, 18px);
+}
+@import "github-markdown-css/github-markdown.css";
 html,
 body {
+  min-height: 100vh;
+  overflow-y: auto;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
