@@ -9,7 +9,7 @@ const Index: NextPage = () => {
   # :computer: + :coffee: = :grin:
   # Here is a web-based markdown editor I made.
     
-    ---
+  ---
     
   ## It uses Remark and Next.js I got a lot of help following [*this*](https://www.youtube.com/watch?v=gxBis8EgoAg) tutorial.
   
